@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     let cardsDeckView = UIView()
     
     let cardViewModels = ([
-        User(name: "Kelly", age: 23, profession: "Music DJ", imageNames: ["kelly1", "kelly2", "kelly2"]),
+        User(name: "Kelly", age: 23, profession: "Music DJ", imageNames: ["kelly1", "kelly2", "kelly3"]),
         Advertiser(title: "Slide out menu", brandName: "Let's Build that app", posterPhotoName: "slide_out_menu_poster"),
         User(name: "Jane", age: 18, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"])
         ] as [ProducesCardViewModel]).map { (producer) -> CardViewModel in

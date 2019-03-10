@@ -10,7 +10,6 @@ import UIKit
 
 class CardView: UIView {
     
-    fileprivate var imageIndex = 0
     fileprivate let gradientLayer = CAGradientLayer()
     fileprivate let barDeselectedColor = UIColor(white: 0, alpha: 0.1)
     fileprivate let barSelectedColor = UIColor.white
@@ -25,6 +24,7 @@ class CardView: UIView {
     
     var cardViewModel: CardViewModel! {
         didSet {
+            setupIndexImageObserver()
             let imageName = cardViewModel.imageNames.first ?? ""
             imageView.image = UIImage(named: imageName)
             infoLabel.attributedText = cardViewModel.attributedString
@@ -86,20 +86,25 @@ class CardView: UIView {
     
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: nil)
-
         let midPoint = frame.width / 2
-        
         if location.x < midPoint {
-            imageIndex -= 1
-            imageIndex = max(0, imageIndex)
+            cardViewModel.advanceToPreviousPhoto()
         } else if location.x > midPoint {
-            imageIndex += 1
-            imageIndex = min(imageIndex, cardViewModel.imageNames.count - 1)
+            cardViewModel.advanceToNextPhoto()
         }
-        
-        let imageName = cardViewModel.imageNames[imageIndex]
+    }
+    
+    fileprivate func setupIndexImageObserver() {
+        cardViewModel.imageIndexObserver = { [unowned self] (index, image) in
+            self.imageView.image = image
+            self.updateBarSelection(index: index)
+        }
+    }
+    
+    fileprivate func updateImage(index: Int) {
+        guard cardViewModel.imageNames.indices.contains(index) else { return }
+        let imageName = cardViewModel.imageNames[index]
         imageView.image = UIImage(named: imageName)
-        updateBarSelection(index: imageIndex)
     }
     
     fileprivate func updateBarSelection(index: Int) {
@@ -176,7 +181,5 @@ class CardView: UIView {
                 self.removeFromSuperview()
             }
         })
-
     }
-
 }
