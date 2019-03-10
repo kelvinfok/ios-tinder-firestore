@@ -22,4 +22,8 @@ extension UIView {
         layer.masksToBounds = true
     }
     
+    func setRoundedCorners() {
+        setCornerRadius(value: frame.height / 2)
+    }
+    
 }

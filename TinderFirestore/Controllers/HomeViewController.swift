@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupDummyCards()
-        
+        setupNavigation()
     }
     
     // MARK: - SetupViews
@@ -68,6 +68,21 @@ class HomeViewController: UIViewController {
             cardsDeckView.addSubview(cardView)
             cardView.fillSuperView()
         }
+    }
+    
+    func setupNavigation() {
+        topStackView.settingsButton.addTarget(self, action: #selector(settingsButtonTapped(_:)), for: .touchUpInside)
+        topStackView.messageButton.addTarget(self, action: #selector(messageButtonTapped(_:)), for: .touchUpInside)
+    }
+    
+    @objc func settingsButtonTapped(_ item: UIBarButtonItem) {
+        let controller = RegistrationViewController()
+        present(controller, animated: true, completion: nil)
+    }
+    
+    @objc func messageButtonTapped(_ item: UIBarButtonItem) {
+        print("show message")
+
     }
 }
 

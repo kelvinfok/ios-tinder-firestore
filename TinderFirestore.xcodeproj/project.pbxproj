@@ -22,6 +22,9 @@
 		8D9709152213133100B3DCE5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8D9709142213133100B3DCE5 /* Podfile */; };
 		8D9709182213146300B3DCE5 /* FastObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9709172213146300B3DCE5 /* FastObjectHelper.swift */; };
 		8DC596C32220559E00AE53C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC596C22220559E00AE53C6 /* User.swift */; };
+		8DD2C55322350AC2003F23DB /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C55222350AC2003F23DB /* RegistrationViewController.swift */; };
+		8DD2C555223520C9003F23DB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C554223520C9003F23DB /* CustomTextField.swift */; };
+		8DD2C5572235223C003F23DB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C5562235223C003F23DB /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		8D9709142213133100B3DCE5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		8D9709172213146300B3DCE5 /* FastObjectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastObjectHelper.swift; sourceTree = "<group>"; };
 		8DC596C22220559E00AE53C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8DD2C55222350AC2003F23DB /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		8DD2C554223520C9003F23DB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		8DD2C5562235223C003F23DB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C4A6493741B90D1497B0E3FC /* Pods_TinderFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +87,7 @@
 				8D79969F2217EDC100CCF533 /* HomeBottomControlsStackView.swift */,
 				8D7996A12217F84D00CCF533 /* TopNavigationStackView.swift */,
 				8D7996A32218012700CCF533 /* CardView.swift */,
+				8DD2C554223520C9003F23DB /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				8D7996A5221801D500CCF533 /* UIView.swift */,
+				8DD2C5562235223C003F23DB /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -142,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				8D9709042213125A00B3DCE5 /* HomeViewController.swift */,
+				8DD2C55222350AC2003F23DB /* RegistrationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,10 +288,13 @@
 				8D6F6123223006AE00669853 /* Advertiser.swift in Sources */,
 				8D9709052213125A00B3DCE5 /* HomeViewController.swift in Sources */,
 				8D7996A02217EDC100CCF533 /* HomeBottomControlsStackView.swift in Sources */,
+				8DD2C55322350AC2003F23DB /* RegistrationViewController.swift in Sources */,
 				8D9709182213146300B3DCE5 /* FastObjectHelper.swift in Sources */,
 				8D7996A6221801D500CCF533 /* UIView.swift in Sources */,
 				8DC596C32220559E00AE53C6 /* User.swift in Sources */,
 				8D9709032213125A00B3DCE5 /* AppDelegate.swift in Sources */,
+				8DD2C555223520C9003F23DB /* CustomTextField.swift in Sources */,
+				8DD2C5572235223C003F23DB /* UIColor.swift in Sources */,
 				8D7996A42218012700CCF533 /* CardView.swift in Sources */,
 				8D7996A22217F84D00CCF533 /* TopNavigationStackView.swift in Sources */,
 				8D6F6121223000B500669853 /* CardViewModel.swift in Sources */,
