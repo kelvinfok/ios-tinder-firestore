@@ -10,11 +10,26 @@ import UIKit
 
 class CardView: UIView {
     
+    fileprivate var imageIndex = 0
+    fileprivate let gradientLayer = CAGradientLayer()
+    fileprivate let barDeselectedColor = UIColor(white: 0, alpha: 0.1)
+    fileprivate let barSelectedColor = UIColor.white
+
+    let barsStackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.spacing = 4
+        sv.distribution = .fillEqually
+        return sv
+    }()
+    
     var cardViewModel: CardViewModel! {
         didSet {
-            imageView.image = UIImage(named: cardViewModel.imageName)
+            let imageName = cardViewModel.imageNames.first ?? ""
+            imageView.image = UIImage(named: imageName)
             infoLabel.attributedText = cardViewModel.attributedString
             infoLabel.textAlignment = cardViewModel.textAlignment
+            updateBars()
         }
     }
     
@@ -36,32 +51,93 @@ class CardView: UIView {
         setupGesture()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.gradientLayer.frame = self.frame
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setupViews() {
         addSubview(imageView)
+        setupGradientLayer()
         addSubview(infoLabel)
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
+            make.edges.equalTo(self)
         }
         infoLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(imageView.snp.leading).offset(16)
             make.trailing.equalTo(imageView.snp.trailing).offset(-16)
             make.bottom.equalTo(imageView.snp.bottom).offset(-16)
         }
-        imageView.setCornerRadius(value: 12)
+        setCornerRadius(value: 12)
         imageView.contentMode = .scaleAspectFill
+        setupBars()
     }
     
     func setupGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
         addGestureRecognizer(panGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: nil)
+
+        let midPoint = frame.width / 2
+        
+        if location.x < midPoint {
+            imageIndex -= 1
+            imageIndex = max(0, imageIndex)
+        } else if location.x > midPoint {
+            imageIndex += 1
+            imageIndex = min(imageIndex, cardViewModel.imageNames.count - 1)
+        }
+        
+        let imageName = cardViewModel.imageNames[imageIndex]
+        imageView.image = UIImage(named: imageName)
+        updateBarSelection(index: imageIndex)
+    }
+    
+    fileprivate func updateBarSelection(index: Int) {
+        guard barsStackView.arrangedSubviews.indices.contains(index) else { return }
+        barsStackView.arrangedSubviews.forEach({ $0.backgroundColor = barDeselectedColor })
+        barsStackView.arrangedSubviews[index].backgroundColor = barSelectedColor
+    }
+    
+    fileprivate func setupGradientLayer() {
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.5, 1.1]
+        gradientLayer.frame = frame
+        layer.addSublayer(gradientLayer)
+    }
+    
+    fileprivate func setupBars() {
+        addSubview(barsStackView)
+        barsStackView.snp.makeConstraints { (make) in
+            make.leading.equalTo(snp.leading).offset(8)
+            make.top.equalTo(snp.top).offset(8)
+            make.trailing.equalTo(snp.trailing).offset(-8)
+            make.height.equalTo(4)
+        }
+    }
+    
+    fileprivate func updateBars() {
+        (0..<cardViewModel.imageNames.count).forEach { _ in
+            let barView = UIView()
+            barView.backgroundColor = barDeselectedColor
+            barsStackView.addArrangedSubview(barView)
+        }
+        barsStackView.arrangedSubviews.first?.backgroundColor = barSelectedColor
     }
     
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
+        case .began:
+            superview?.subviews.forEach({ $0.layer.removeAllAnimations() })
         case .changed:
             handleChanged(gesture)
         case .ended:

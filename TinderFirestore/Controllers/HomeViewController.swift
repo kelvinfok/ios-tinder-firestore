@@ -16,9 +16,9 @@ class HomeViewController: UIViewController {
     let cardsDeckView = UIView()
     
     let cardViewModels = ([
-        User(name: "Kelly", age: 23, profession: "Music DJ", imageName: "lady5c"),
-        User(name: "Jane", age: 18, profession: "Teacher", imageName: "lady4c"),
-        Advertiser(title: "Slide out menu", brandName: "Let's Build that app", posterPhotoName: "slide_out_menu_poster")
+        User(name: "Kelly", age: 23, profession: "Music DJ", imageNames: ["kelly1", "kelly2", "kelly2"]),
+        Advertiser(title: "Slide out menu", brandName: "Let's Build that app", posterPhotoName: "slide_out_menu_poster"),
+        User(name: "Jane", age: 18, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"])
         ] as [ProducesCardViewModel]).map { (producer) -> CardViewModel in
             return producer.toCardViewModel()
     }
@@ -47,6 +47,9 @@ class HomeViewController: UIViewController {
         }
         
         mainStackView.bringSubviewToFront(cardsDeckView)
+        
+        mainStackView.isLayoutMarginsRelativeArrangement = true
+        mainStackView.layoutMargins = .init(top: 0, left: 12, bottom: 0, right: 12)
         
         topStackView.snp.makeConstraints { (make) in
             make.height.equalTo(80)
