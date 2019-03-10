@@ -26,6 +26,7 @@
 		8DD2C555223520C9003F23DB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C554223520C9003F23DB /* CustomTextField.swift */; };
 		8DD2C5572235223C003F23DB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C5562235223C003F23DB /* UIColor.swift */; };
 		8DD2C55922356542003F23DB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C55822356542003F23DB /* RegistrationViewModel.swift */; };
+		8DD2C55B22356E24003F23DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DD2C55A22356E23003F23DB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		8DD2C554223520C9003F23DB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8DD2C5562235223C003F23DB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		8DD2C55822356542003F23DB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		8DD2C55A22356E23003F23DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4A6493741B90D1497B0E3FC /* Pods_TinderFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				8D9709062213125A00B3DCE5 /* Main.storyboard */,
 				8D9709092213125B00B3DCE5 /* Assets.xcassets */,
 				8D97090B2213125B00B3DCE5 /* LaunchScreen.storyboard */,
+				8DD2C55A22356E23003F23DB /* GoogleService-Info.plist */,
 				8D97090E2213125B00B3DCE5 /* Info.plist */,
 			);
 			path = TinderFirestore;
@@ -237,6 +240,7 @@
 			files = (
 				8D97090D2213125B00B3DCE5 /* LaunchScreen.storyboard in Resources */,
 				8D97090A2213125B00B3DCE5 /* Assets.xcassets in Resources */,
+				8DD2C55B22356E24003F23DB /* GoogleService-Info.plist in Resources */,
 				8D9709152213133100B3DCE5 /* Podfile in Resources */,
 				8D9709082213125A00B3DCE5 /* Main.storyboard in Resources */,
 			);
