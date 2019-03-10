@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F99EE4509915B1E0B69E9DCDEF10D103"
+               BlueprintIdentifier = "459542956329520B9FE3B9B891EC92F6"
                BuildableName = "Pods_TinderFirestore.framework"
                BlueprintName = "Pods-TinderFirestore"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F99EE4509915B1E0B69E9DCDEF10D103"
+            BlueprintIdentifier = "459542956329520B9FE3B9B891EC92F6"
             BuildableName = "Pods_TinderFirestore.framework"
             BlueprintName = "Pods-TinderFirestore"
             ReferencedContainer = "container:Pods.xcodeproj">

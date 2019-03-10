@@ -6,5 +6,10 @@ target 'TinderFirestore' do
   use_frameworks!
 
   pod 'SnapKit'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'SDWebImage'
+  pod 'JGProgressHUD'
 
 end
