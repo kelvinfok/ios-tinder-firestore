@@ -9,13 +9,23 @@
 import UIKit
 
 class RegistrationViewController: UIViewController {
-        
-    lazy var stackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [selectPhotoButton,
-                                                fullNameTextField,
+    
+    fileprivate let gradientLayer = CAGradientLayer()
+    
+    lazy var verticalStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [fullNameTextField,
                                                 emailTextField,
                                                 passwordTextField,
                                                 registerButton])
+        sv.axis = .vertical
+        sv.distribution = .fillEqually
+        sv.spacing = 8
+        return sv
+    }()
+        
+    lazy var stackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [selectPhotoButton,
+                                                verticalStackView])
         sv.axis = .vertical
         sv.spacing = 8
         return sv
@@ -78,12 +88,26 @@ class RegistrationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        gradientLayer.frame = view.bounds
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if self.traitCollection.verticalSizeClass == .compact {
+            stackView.axis = .horizontal
+        } else {
+            stackView.axis = .vertical
+        }
+    }
+    
     func setupViews() {
         
         view.addSubview(stackView)
         
         selectPhotoButton.snp.makeConstraints({ (make) in
             make.height.equalTo(selectPhotoButton.snp.width)
+            make.width.equalTo(275)
         })
         
         stackView.snp.makeConstraints { (make) in
@@ -130,7 +154,6 @@ class RegistrationViewController: UIViewController {
     }
     
     fileprivate func setupGradientLayer() {
-        let gradientLayer = CAGradientLayer()
         let topColor = UIColor(hexFromString: "FD5B5F")
         let bottomColor = UIColor(hexFromString: "E50072")
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
@@ -138,5 +161,6 @@ class RegistrationViewController: UIViewController {
         gradientLayer.frame = view.bounds
         view.layer.addSublayer(gradientLayer)
     }
+    
 }
 
