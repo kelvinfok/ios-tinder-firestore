@@ -11,6 +11,7 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     fileprivate let gradientLayer = CAGradientLayer()
+    fileprivate let registrationViewModel = RegistrationViewModel()
     
     lazy var verticalStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [fullNameTextField,
@@ -43,10 +44,12 @@ class RegistrationViewController: UIViewController {
     
     let registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        button.backgroundColor = .lightGray
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         button.setTitle("Register", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.gray, for: .disabled)
+        button.isEnabled = false
         return button
     }()
     
@@ -55,6 +58,7 @@ class RegistrationViewController: UIViewController {
         tf.placeholder = "Enter full name"
         tf.autocorrectionType = .no
         tf.backgroundColor = .white
+        tf.addTarget(self, action: #selector(handleTextChanged(_:)), for: .editingChanged)
         return tf
     }()
     
@@ -63,6 +67,7 @@ class RegistrationViewController: UIViewController {
         tf.placeholder = "Enter email"
         tf.backgroundColor = .white
         tf.keyboardType = .emailAddress
+        tf.addTarget(self, action: #selector(handleTextChanged(_:)), for: .editingChanged)
         return tf
     }()
     
@@ -72,6 +77,7 @@ class RegistrationViewController: UIViewController {
         tf.isSecureTextEntry = true
         tf.autocorrectionType = .no
         tf.backgroundColor = .white
+        tf.addTarget(self, action: #selector(handleTextChanged(_:)), for: .editingChanged)
         return tf
     }()
     
@@ -81,6 +87,7 @@ class RegistrationViewController: UIViewController {
         setupViews()
         setupObservers()
         setupGesture()
+        setupRegistrationViewObserver()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,6 +105,17 @@ class RegistrationViewController: UIViewController {
             stackView.axis = .horizontal
         } else {
             stackView.axis = .vertical
+        }
+    }
+    
+    fileprivate func setupRegistrationViewObserver() {
+        registrationViewModel.isFormValidObserver = { [unowned self] (isFormValid) in
+            if isFormValid {
+                self.registerButton.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+            } else {
+                self.registerButton.backgroundColor = .lightGray
+            }
+            self.registerButton.isEnabled = isFormValid
         }
     }
     
@@ -162,5 +180,25 @@ class RegistrationViewController: UIViewController {
         view.layer.addSublayer(gradientLayer)
     }
     
+     @objc fileprivate func handleTextChanged(_ textfield: UITextField) {
+        let text = textfield.text
+        switch textfield {
+        case fullNameTextField:
+            registrationViewModel.fullName = text
+        case emailTextField:
+            registrationViewModel.email = text
+        case passwordTextField:
+            registrationViewModel.password = text
+        default: break
+        }
+    }
+    
 }
 
+
+//extension RegistrationViewController: UIImagePickerController {
+//
+//
+//
+//
+//}

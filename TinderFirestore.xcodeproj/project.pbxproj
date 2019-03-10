@@ -25,6 +25,7 @@
 		8DD2C55322350AC2003F23DB /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C55222350AC2003F23DB /* RegistrationViewController.swift */; };
 		8DD2C555223520C9003F23DB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C554223520C9003F23DB /* CustomTextField.swift */; };
 		8DD2C5572235223C003F23DB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C5562235223C003F23DB /* UIColor.swift */; };
+		8DD2C55922356542003F23DB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C55822356542003F23DB /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		8DD2C55222350AC2003F23DB /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		8DD2C554223520C9003F23DB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8DD2C5562235223C003F23DB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		8DD2C55822356542003F23DB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C4A6493741B90D1497B0E3FC /* Pods_TinderFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				8D6F6120223000B500669853 /* CardViewModel.swift */,
+				8DD2C55822356542003F23DB /* RegistrationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				8D6F6123223006AE00669853 /* Advertiser.swift in Sources */,
 				8D9709052213125A00B3DCE5 /* HomeViewController.swift in Sources */,
 				8D7996A02217EDC100CCF533 /* HomeBottomControlsStackView.swift in Sources */,
+				8DD2C55922356542003F23DB /* RegistrationViewModel.swift in Sources */,
 				8DD2C55322350AC2003F23DB /* RegistrationViewController.swift in Sources */,
 				8D9709182213146300B3DCE5 /* FastObjectHelper.swift in Sources */,
 				8D7996A6221801D500CCF533 /* UIView.swift in Sources */,
