@@ -41,6 +41,9 @@ class RegistrationViewController: UIViewController {
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
         button.setCornerRadius(value: 16)
+        button.addTarget(self, action: #selector(handleSelectPhoto(_:)), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.clipsToBounds = true
         return button
     }()
     
@@ -108,6 +111,12 @@ class RegistrationViewController: UIViewController {
         } else {
             stackView.axis = .vertical
         }
+    }
+    
+    @objc fileprivate func handleSelectPhoto(_ button: UIButton) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     fileprivate func setupRegistrationViewObserver() {
@@ -222,9 +231,16 @@ class RegistrationViewController: UIViewController {
 }
 
 
-//extension RegistrationViewController: UIImagePickerController {
-//
-//
-//
-//
-//}
+extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        dismiss(animated: true, completion: nil)
+    }
+
+}
