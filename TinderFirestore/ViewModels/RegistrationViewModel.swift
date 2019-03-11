@@ -6,9 +6,17 @@
 //  Copyright © 2019 Kelvin Fok. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class RegistrationViewModel {
+    
+    var bindableImage = Bindable<UIImage>()
+    
+//    var image: UIImage? {
+//        didSet {
+//            imageObserver?(image)
+//        }
+//    }
     
     var fullName: String? {
         didSet {
@@ -30,6 +38,7 @@ class RegistrationViewModel {
     
     // Reactive programming
     var isFormValidObserver: ((Bool) -> Void)? = nil
+//    var imageObserver: ((UIImage?) -> Void)? = nil
     
     fileprivate func checkFormValidity() {
         let isFormValid = fullName?.isEmpty == false && email?.isEmpty == false && password?.isEmpty == false

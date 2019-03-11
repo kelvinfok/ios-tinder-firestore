@@ -128,6 +128,11 @@ class RegistrationViewController: UIViewController {
             }
             self.registerButton.isEnabled = isFormValid
         }
+        
+        registrationViewModel.bindableImage.bind { [unowned self] (image) in
+            self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
     }
     
     func setupViews() {
@@ -239,7 +244,9 @@ extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigat
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
-        self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        registrationViewModel.bindableImage.value = image
+//         registrationViewModel.image = image
         dismiss(animated: true, completion: nil)
     }
 
