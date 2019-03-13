@@ -18,13 +18,11 @@ class HUDManager {
     private init() {}
     
     func show(in view: UIView, title: String, description: String? = nil) {
-        if hud.isVisible {
-            hud.dismiss()
-        }
+        hud.dismiss(animated: false)
         hud.textLabel.text = title
         hud.detailTextLabel.text = description
-        hud.dismiss(afterDelay: 3.0)
         hud.show(in: view, animated: true)
+        hud.dismiss(afterDelay: 3.0)
     }
     
     func show(in view: UIView, error: Error) {

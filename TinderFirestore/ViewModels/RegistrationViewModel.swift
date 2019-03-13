@@ -14,12 +14,6 @@ class RegistrationViewModel {
     var bindableImage = Bindable<UIImage>()
     var bindableIsRegistering = Bindable<Bool>()
     
-//    var image: UIImage? {
-//        didSet {
-//            imageObserver?(image)
-//        }
-//    }
-    
     var fullName: String? {
         didSet {
             checkFormValidity()
@@ -64,13 +58,15 @@ class RegistrationViewModel {
                     return
                 }
                 
-                self.bindableIsRegistering.value = false
+                let imageUrl = url?.absoluteString ?? ""
+                let uid = Auth.auth().currentUser?.uid ?? ""
                 
-                completion(nil)
-                print("Finish uploading image to storage. Url: \(String(describing: url?.absoluteString))")
+                let document = ["fullName" : self.fullName ?? "",
+                                "uid" : uid,
+                                "imageUrl" : imageUrl]
                 
+                FirestoreManager.shared.save(to: .user, path: uid, document: document, completion: completion)
             })
-            
         }
     }
     

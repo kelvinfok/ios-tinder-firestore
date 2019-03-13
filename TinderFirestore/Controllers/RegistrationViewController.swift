@@ -131,7 +131,6 @@ class RegistrationViewController: UIViewController {
         
         registrationViewModel.bindableImage.bind { [unowned self] (image) in
             self.selectPhotoButton.setTitle(nil, for: .normal)
-//            self.selectPhotoButton.imageView?.image = image?.withRenderingMode(.alwaysOriginal)
             self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
@@ -224,8 +223,10 @@ class RegistrationViewController: UIViewController {
 
         registrationViewModel.performRegistration { [unowned self] (error) in
             if let error = error {
+                print(error.localizedDescription)
                 HUDManager.shared.show(in: self.view, error: error)
             } else {
+                self.registrationViewModel.bindableIsRegistering.value = false
                 print("all good!")
             }
         }

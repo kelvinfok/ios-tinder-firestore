@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		595F46AA68BAFCA1C5544762 /* Pods_TinderFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A6493741B90D1497B0E3FC /* Pods_TinderFirestore.framework */; };
 		8D15825F22394A9100454A30 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D15825E22394A9100454A30 /* HUDManager.swift */; };
+		8D15826522395D2C00454A30 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D15826422395D2C00454A30 /* FirestoreManager.swift */; };
 		8D6F6121223000B500669853 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F6120223000B500669853 /* CardViewModel.swift */; };
 		8D6F6123223006AE00669853 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F6122223006AE00669853 /* Advertiser.swift */; };
 		8D6F90612236A56A00EE79F3 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F90602236A56A00EE79F3 /* Bindable.swift */; };
@@ -37,6 +38,7 @@
 		26B2C38142D7C30098CDBB33 /* Pods-TinderFirestore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderFirestore.release.xcconfig"; path = "Pods/Target Support Files/Pods-TinderFirestore/Pods-TinderFirestore.release.xcconfig"; sourceTree = "<group>"; };
 		409E4E682827678AD084D37A /* Pods-TinderFirestore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderFirestore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinderFirestore/Pods-TinderFirestore.debug.xcconfig"; sourceTree = "<group>"; };
 		8D15825E22394A9100454A30 /* HUDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDManager.swift; sourceTree = "<group>"; };
+		8D15826422395D2C00454A30 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		8D6F6120223000B500669853 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		8D6F6122223006AE00669853 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		8D6F90602236A56A00EE79F3 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				8DB171782238B48800BCDD83 /* StorageManager.swift */,
 				8D15825E22394A9100454A30 /* HUDManager.swift */,
+				8D15826422395D2C00454A30 /* FirestoreManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				8DD2C55322350AC2003F23DB /* RegistrationViewController.swift in Sources */,
 				8D9709182213146300B3DCE5 /* FastObjectHelper.swift in Sources */,
 				8D6F90612236A56A00EE79F3 /* Bindable.swift in Sources */,
+				8D15826522395D2C00454A30 /* FirestoreManager.swift in Sources */,
 				8D7996A6221801D500CCF533 /* UIView.swift in Sources */,
 				8DC596C32220559E00AE53C6 /* User.swift in Sources */,
 				8D9709032213125A00B3DCE5 /* AppDelegate.swift in Sources */,

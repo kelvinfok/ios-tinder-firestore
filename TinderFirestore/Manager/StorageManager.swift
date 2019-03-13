@@ -22,6 +22,7 @@ class StorageManager {
     func upload(image: UIImage,
                 with fileName: String = UUID().uuidString,
                 completion: ((StorageMetadata?, URL?, Error?) -> Void)? = nil) {
+        
         let path = imagePath.appending(fileName).appending(imageExtension)
         let storageReference = storage.reference(withPath: path)
         let imageData = image.jpegData(compressionQuality: Config.jpgCompressionQuality) ?? Data()
