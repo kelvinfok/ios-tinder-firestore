@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationViewModel {
     
     var bindableImage = Bindable<UIImage>()
+    var bindableIsRegistering = Bindable<Bool>()
     
 //    var image: UIImage? {
 //        didSet {
@@ -33,6 +35,42 @@ class RegistrationViewModel {
     var password: String? {
         didSet {
             checkFormValidity()
+        }
+    }
+    
+    func performRegistration(completion: @escaping (Error?) -> Void) {
+        
+        guard let email = email, let password = password else { return }
+        
+        bindableIsRegistering.value = true
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            print("user registered: \(String(describing: result?.user.uid))")
+            
+            guard let image = self.bindableImage.value else {
+                fatalError("Image is missing")
+            }
+            
+            StorageManager.shared.upload(image: image, completion: { (meta, url, error) in
+                
+                if let error = error {
+                    completion(error)
+                    return
+                }
+                
+                self.bindableIsRegistering.value = false
+                
+                completion(nil)
+                print("Finish uploading image to storage. Url: \(String(describing: url?.absoluteString))")
+                
+            })
+            
         }
     }
     

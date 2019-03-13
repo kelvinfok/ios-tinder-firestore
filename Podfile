@@ -8,6 +8,7 @@ target 'TinderFirestore' do
   pod 'SnapKit'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'Firebase/Core'
   pod 'SDWebImage'
   pod 'JGProgressHUD'

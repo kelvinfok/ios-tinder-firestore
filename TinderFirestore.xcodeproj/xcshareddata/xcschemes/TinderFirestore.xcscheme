@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "49E1BCEB4EA4569C0E88E893F988E831"
-               BuildableName = "SnapKit.framework"
-               BlueprintName = "SnapKit"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "8D9708FE2213125A00B3DCE5"
+               BuildableName = "TinderFirestore.app"
+               BlueprintName = "TinderFirestore"
+               ReferencedContainer = "container:TinderFirestore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8D9708FE2213125A00B3DCE5"
+            BuildableName = "TinderFirestore.app"
+            BlueprintName = "TinderFirestore"
+            ReferencedContainer = "container:TinderFirestore.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -42,15 +51,23 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49E1BCEB4EA4569C0E88E893F988E831"
-            BuildableName = "SnapKit.framework"
-            BlueprintName = "SnapKit"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "8D9708FE2213125A00B3DCE5"
+            BuildableName = "TinderFirestore.app"
+            BlueprintName = "TinderFirestore"
+            ReferencedContainer = "container:TinderFirestore.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -60,6 +77,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8D9708FE2213125A00B3DCE5"
+            BuildableName = "TinderFirestore.app"
+            BlueprintName = "TinderFirestore"
+            ReferencedContainer = "container:TinderFirestore.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

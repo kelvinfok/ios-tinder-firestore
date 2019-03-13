@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "459542956329520B9FE3B9B891EC92F6"
+               BlueprintIdentifier = "E107B26C2792D694F0FCDA5B9A7E1C7D"
                BuildableName = "Pods_TinderFirestore.framework"
                BlueprintName = "Pods-TinderFirestore"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "459542956329520B9FE3B9B891EC92F6"
+            BlueprintIdentifier = "E107B26C2792D694F0FCDA5B9A7E1C7D"
             BuildableName = "Pods_TinderFirestore.framework"
             BlueprintName = "Pods-TinderFirestore"
             ReferencedContainer = "container:Pods.xcodeproj">

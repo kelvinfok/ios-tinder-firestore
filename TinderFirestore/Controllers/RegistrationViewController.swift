@@ -62,7 +62,6 @@ class RegistrationViewController: UIViewController {
     let fullNameTextField: CustomTextField = {
         let tf = CustomTextField(padding: 16, height: 48)
         tf.placeholder = "Enter full name"
-        tf.autocorrectionType = .no
         tf.backgroundColor = .white
         tf.addTarget(self, action: #selector(handleTextChanged(_:)), for: .editingChanged)
         return tf
@@ -73,6 +72,7 @@ class RegistrationViewController: UIViewController {
         tf.placeholder = "Enter email"
         tf.backgroundColor = .white
         tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         tf.addTarget(self, action: #selector(handleTextChanged(_:)), for: .editingChanged)
         return tf
     }()
@@ -130,9 +130,18 @@ class RegistrationViewController: UIViewController {
         }
         
         registrationViewModel.bindableImage.bind { [unowned self] (image) in
+            self.selectPhotoButton.setTitle(nil, for: .normal)
+//            self.selectPhotoButton.imageView?.image = image?.withRenderingMode(.alwaysOriginal)
             self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
+        registrationViewModel.bindableIsRegistering.bind { [unowned self] (isRegistering) in
+            if isRegistering == true {
+                HUDManager.shared.show(in: self.view, title: "Register")
+            } else {
+                HUDManager.shared.show(in: self.view, title: "You're registered!", description: "You can now logged in with your email and password.")
+            }
+        }
     }
     
     func setupViews() {
@@ -169,11 +178,11 @@ class RegistrationViewController: UIViewController {
     }
     
     fileprivate func setupGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleViewTapDismiss))
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc fileprivate func handleViewTap() {
+    @objc fileprivate func handleViewTapDismiss() {
         view.endEditing(true)
     }
     
@@ -211,19 +220,17 @@ class RegistrationViewController: UIViewController {
     
     @objc func handleRegister(_ button: UIButton) {
         
-        handleViewTap()
-        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            
+        handleViewTapDismiss()
+
+        registrationViewModel.performRegistration { [unowned self] (error) in
             if let error = error {
-                self.showHUDWithError(error: error)
-                return
+                HUDManager.shared.show(in: self.view, error: error)
+            } else {
+                print("all good!")
             }
-            
-            print("user registered: \(result?.user.uid)")
-            
         }
+        
+        
     }
     
     fileprivate func showHUDWithError(error: Error) {
@@ -244,9 +251,7 @@ extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigat
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
-        
         registrationViewModel.bindableImage.value = image
-//         registrationViewModel.image = image
         dismiss(animated: true, completion: nil)
     }
 
