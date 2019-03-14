@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CardView: UIView {
     
@@ -25,10 +26,7 @@ class CardView: UIView {
     var cardViewModel: CardViewModel! {
         didSet {
             setupIndexImageObserver()
-            let imageName = cardViewModel.imageNames.first ?? ""
-            imageView.image = UIImage(named: imageName)
-            infoLabel.attributedText = cardViewModel.attributedString
-            infoLabel.textAlignment = cardViewModel.textAlignment
+            updateViews()
             updateBars()
         }
     }
@@ -75,6 +73,14 @@ class CardView: UIView {
         setCornerRadius(value: 12)
         imageView.contentMode = .scaleAspectFill
         setupBars()
+    }
+    
+    func updateViews() {
+        let imageName = cardViewModel.imageNames.first ?? ""
+        imageView.image = UIImage(named: imageName)
+        imageView.sd_setImage(with: URL(string: imageName)!, completed: nil)
+        infoLabel.attributedText = cardViewModel.attributedString
+        infoLabel.textAlignment = cardViewModel.textAlignment
     }
     
     func setupGesture() {
@@ -139,7 +145,7 @@ class CardView: UIView {
         barsStackView.arrangedSubviews.first?.backgroundColor = barSelectedColor
     }
     
-    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+    @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began:
             superview?.subviews.forEach({ $0.layer.removeAllAnimations() })
@@ -152,7 +158,7 @@ class CardView: UIView {
         }
     }
     
-    func handleChanged(_ gesture: UIPanGestureRecognizer) {
+    fileprivate func handleChanged(_ gesture: UIPanGestureRecognizer) {
         
         let translation = gesture.translation(in: nil)
         let x = translation.x
@@ -164,7 +170,7 @@ class CardView: UIView {
         self.transform = rotationalTransformation.translatedBy(x: x, y: y)
     }
     
-    func handleEnded(_ gesture: UIPanGestureRecognizer) {
+    fileprivate func handleEnded(_ gesture: UIPanGestureRecognizer) {
         
         let translationDirection: CGFloat = gesture.translation(in: nil).x > 0 ? 1 : -1
         let shouldDismissCard: Bool = abs(gesture.translation(in: nil).x) > threshold

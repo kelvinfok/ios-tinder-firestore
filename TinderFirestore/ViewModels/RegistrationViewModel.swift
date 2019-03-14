@@ -58,14 +58,20 @@ class RegistrationViewModel {
                     return
                 }
                 
+                let name = self.fullName ?? ""
                 let imageUrl = url?.absoluteString ?? ""
                 let uid = Auth.auth().currentUser?.uid ?? ""
+                let profession = ""
                 
-                let document = ["fullName" : self.fullName ?? "",
-                                "uid" : uid,
-                                "imageUrl" : imageUrl]
+                let user = User(name: name, age: 0, profession: profession, imageNames: [imageUrl])
                 
-                FirestoreManager.shared.save(to: .user, path: uid, document: document, completion: completion)
+//                let document = ["fullName" : self.fullName ?? "",
+//                                "uid" : uid,
+//                                "imageUrl" : imageUrl]
+                
+                FirestoreManager.shared.save(to: .user, path: uid, object: user, completion: completion)
+                
+                // FirestoreManager.shared.save(to: .user, path: uid, document: document, completion: completion)
             })
         }
     }

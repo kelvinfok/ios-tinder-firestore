@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseFirestore
 
 class HomeViewController: UIViewController {
     
@@ -15,19 +16,25 @@ class HomeViewController: UIViewController {
     let tabBarStackView = HomeBottomControlsStackView()
     let cardsDeckView = UIView()
     
-    let cardViewModels = ([
-        User(name: "Kelly", age: 23, profession: "Music DJ", imageNames: ["kelly1", "kelly2", "kelly3"]),
-        Advertiser(title: "Slide out menu", brandName: "Let's Build that app", posterPhotoName: "slide_out_menu_poster"),
-        User(name: "Jane", age: 18, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"])
-        ] as [ProducesCardViewModel]).map { (producer) -> CardViewModel in
-            return producer.toCardViewModel()
+//    let cardViewModels = ([
+//        User(name: "Kelly", age: 23, profession: "Music DJ", imageNames: ["kelly1", "kelly2", "kelly3"]),
+//        Advertiser(title: "Slide out menu", brandName: "Let's Build that app", posterPhotoName: "slide_out_menu_poster"),
+//        User(name: "Jane", age: 18, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"])
+//        ] as [ProducesCardViewModel]).map { (producer) -> CardViewModel in
+//            return producer.toCardViewModel()
+//    }
+    
+    var cardViewModels = [CardViewModel]() {
+        didSet {
+            setupDummyCards()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        setupDummyCards()
         setupNavigation()
+        fetchUsers()
     }
     
     // MARK: - SetupViews
@@ -58,6 +65,8 @@ class HomeViewController: UIViewController {
         tabBarStackView.snp.makeConstraints { (make) in
             make.height.equalTo(120)
         }
+        
+        view.backgroundColor = .white
     }
     
     func setupDummyCards() {
@@ -75,6 +84,17 @@ class HomeViewController: UIViewController {
         topStackView.messageButton.addTarget(self, action: #selector(messageButtonTapped(_:)), for: .touchUpInside)
     }
     
+    fileprivate func fetchUsers() {
+        FirestoreManager.shared.fetch(from: .user) { (users: [User]?, error: Error?) in
+            var temp = [CardViewModel]()
+            users?.forEach({ (user) in
+                print("user: \(user)")
+                temp.append(user.toCardViewModel())
+            })
+            self.cardViewModels = temp
+        }
+    }
+    
     @objc func settingsButtonTapped(_ item: UIBarButtonItem) {
         let controller = RegistrationViewController()
         present(controller, animated: true, completion: nil)
@@ -82,7 +102,6 @@ class HomeViewController: UIViewController {
     
     @objc func messageButtonTapped(_ item: UIBarButtonItem) {
         print("show message")
-
     }
 }
 

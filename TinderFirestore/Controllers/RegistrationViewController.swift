@@ -230,8 +230,6 @@ class RegistrationViewController: UIViewController {
                 print("all good!")
             }
         }
-        
-        
     }
     
     fileprivate func showHUDWithError(error: Error) {
