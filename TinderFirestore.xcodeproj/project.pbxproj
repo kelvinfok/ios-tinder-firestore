@@ -24,6 +24,7 @@
 		8D9709152213133100B3DCE5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8D9709142213133100B3DCE5 /* Podfile */; };
 		8D9709182213146300B3DCE5 /* FastObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9709172213146300B3DCE5 /* FastObjectHelper.swift */; };
 		8D970CBE223AA01800985753 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D970CBD223AA01800985753 /* UIImageView.swift */; };
+		8D970CC2223AA19500985753 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D970CC1223AA19500985753 /* FireStoreManager.swift */; };
 		8DB171762238B3A900BCDD83 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB171752238B3A900BCDD83 /* Config.swift */; };
 		8DB171792238B48800BCDD83 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB171782238B48800BCDD83 /* StorageManager.swift */; };
 		8DC596C32220559E00AE53C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC596C22220559E00AE53C6 /* User.swift */; };
@@ -55,6 +56,7 @@
 		8D9709142213133100B3DCE5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8D9709172213146300B3DCE5 /* FastObjectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastObjectHelper.swift; sourceTree = "<group>"; };
 		8D970CBD223AA01800985753 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		8D970CC1223AA19500985753 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		8DB171752238B3A900BCDD83 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8DB171782238B48800BCDD83 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		8DC596C22220559E00AE53C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				8DB171782238B48800BCDD83 /* StorageManager.swift */,
 				8D15825E22394A9100454A30 /* HUDManager.swift */,
+				8D970CC1223AA19500985753 /* FireStoreManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				8DB171792238B48800BCDD83 /* StorageManager.swift in Sources */,
 				8D6F6123223006AE00669853 /* Advertiser.swift in Sources */,
 				8D9709052213125A00B3DCE5 /* HomeViewController.swift in Sources */,
+				8D970CC2223AA19500985753 /* FireStoreManager.swift in Sources */,
 				8D7996A02217EDC100CCF533 /* HomeBottomControlsStackView.swift in Sources */,
 				8DD2C55922356542003F23DB /* RegistrationViewModel.swift in Sources */,
 				8DD2C55322350AC2003F23DB /* RegistrationViewController.swift in Sources */,
