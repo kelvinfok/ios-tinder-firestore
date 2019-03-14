@@ -26,12 +26,12 @@ class CardViewModel {
     
     // Reactive programming
     
-    var imageIndexObserver: ((Int, UIImage) -> Void)? = nil
+    var imageIndexObserver: ((Int, String) -> Void)? = nil
     
     fileprivate var imageIndex = 0 {
         didSet {
-            let image = UIImage(named: imageNames[imageIndex])
-            imageIndexObserver?(imageIndex, image ?? UIImage())
+            let imageUrl = imageNames[imageIndex]
+            imageIndexObserver?(imageIndex, imageUrl)
         }
     }
     

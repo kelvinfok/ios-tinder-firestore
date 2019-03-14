@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     
     var cardViewModels = [CardViewModel]() {
         didSet {
-            setupDummyCards()
+            setupUserCards()
         }
     }
 
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
     }
     
-    func setupDummyCards() {
+    func setupUserCards() {
         
         cardViewModels.forEach { (cardVM) in
             let cardView = CardView(frame: .zero)

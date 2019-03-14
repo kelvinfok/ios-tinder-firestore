@@ -14,6 +14,10 @@ class FirestoreManager {
         case user = "user"
     }
     
+    enum Query {
+        case age(value: Int)
+    }
+    
     static let shared = FirestoreManager()
     
     let store = Firestore.firestore()

@@ -101,8 +101,8 @@ class CardView: UIView {
     }
     
     fileprivate func setupIndexImageObserver() {
-        cardViewModel.imageIndexObserver = { [unowned self] (index, image) in
-            self.imageView.image = image
+        cardViewModel.imageIndexObserver = { [unowned self] (index, imageUrl) in
+            self.imageView.setImage(with: imageUrl)
             self.updateBarSelection(index: index)
         }
     }
